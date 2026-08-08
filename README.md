@@ -1,32 +1,44 @@
-# React + TypeScript + Vite
+# Aushertech — AusherMed
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Marketing and product site for Aushertech's AusherMed line — medical-grade UPS power stations for home
+healthcare and facility backup power.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + TypeScript
+- Vite (with Oxlint for linting)
+- React Router for client-side routing
+- Tailwind CSS v4 (CSS-first config, see `src/index.css`)
+- Framer Motion for animation
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+The dev server runs at `http://localhost:5173` by default.
+
+## Scripts
+
+- `npm run dev` — start the Vite dev server
+- `npm run build` — type-check and build for production
+- `npm run lint` — run Oxlint
+- `npm run preview` — preview the production build locally
+
+## Project structure
+
+```
+src/
+  assets/products/   Product images
+  components/        Shared UI (Navbar, Footer, Layout, ...)
+  data/               Product catalog and static site content
+  pages/              Route-level pages (Home, Products, About, Contact)
+  types/              Shared TypeScript types
+```
+
+Product content (specs, taglines, images) is data-driven — see `src/data/products.ts`. Adding or editing a
+product model generally only requires changes there.
+
+See `CLAUDE.md` for more detailed architecture and styling notes.
