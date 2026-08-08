@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-display: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Clinical paper — warm, not the cool blue-grey of a generic SaaS neutral scale */
+  --color-ink: oklch(21% 0.014 65);
+  --color-ink-muted: oklch(46% 0.016 65);
+  --color-page: oklch(98.5% 0.006 80);
+  --color-surface: oklch(96% 0.009 75);
+  --color-border: oklch(89% 0.009 70);
+
+  /* Instrument panel — the dark, neutral material of the hardware itself */
+  --color-panel: oklch(17% 0.006 250);
+  --color-panel-soft: oklch(23% 0.01 250);
+  --color-panel-line: oklch(32% 0.012 250);
+  --color-panel-ink: oklch(93% 0.006 90);
+  --color-panel-ink-muted: oklch(66% 0.012 90);
+
+  /* Amber — pulled from the AusherMed unit's own indicator dial, not a generic SaaS blue */
+  --color-brand: oklch(46% 0.15 48);
+  --color-brand-dark: oklch(36% 0.13 44);
+  --color-brand-light: oklch(58% 0.16 55);
+  --color-brand-vivid: oklch(70% 0.17 60);
+
+  /* Teal — the oscilloscope/telemetry trace color */
+  --color-accent: oklch(52% 0.1 195);
+  --color-accent-vivid: oklch(72% 0.12 195);
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background: var(--color-page);
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+
+  a {
+    color: var(--color-brand);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  a:hover {
+    color: var(--color-brand-dark);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: oklch(60% 0.01 70);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-light);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@keyframes dash-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -320;
+  }
+}
